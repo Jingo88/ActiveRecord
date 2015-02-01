@@ -1,8 +1,13 @@
 require 'active_record'
 
-class artists < ActiveRecord::Base
-	def artistSongs
-		
+class Album < ActiveRecord::Base
+	def songs
+		Song.where({album_id: self.id})
+	end
+
+	def artists
+		Artist.find_by({id: self.artist_id})
 	end
 
 end
+
